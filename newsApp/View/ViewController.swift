@@ -30,9 +30,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         let url = URL(string: "https://raw.githubusercontent.com/atilsamancioglu/BTK-iOSDataSet/master/dataset.json")
         
-        Webservice().haberleriIndir(url: url!) { (haberler) in
-            if let haberler = haberler {
-                self.newsTableViewModel = NewsTableViewModel(newsList: haberler)
+        Webservice().downloadNews(url: url!) { (news) in
+            if let news = news {
+                self.newsTableViewModel = NewsTableViewModel(newsList: news)
                 
                 DispatchQueue.main.async {
                     self.tableView.reloadData()
